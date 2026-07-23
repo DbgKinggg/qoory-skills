@@ -49,6 +49,7 @@ Before the first live Qoory request in a session:
 4. If neither access path is available, stop before research and ask the user to choose:
    - Connect Qoory Remote MCP with browser OAuth (recommended) using `https://api.qoory.ai/mcp`.
    - Create an API key in Qoory Developer Settings at `https://www.qoory.ai/settings/developer` and store it in the client's secret manager or process environment for REST fallback.
+   Present both choices explicitly with their setup location; do not merely report that access is missing or say to enable either method.
 5. Never ask the user to paste an API key into chat. After the user completes either path, resume the original request.
 
 ## Workflow
