@@ -37,7 +37,19 @@ Send the key as:
 Authorization: Bearer $QOORY_API_KEY
 ```
 
-The Skill metadata advertises the remote MCP endpoint but does not install credentials. OAuth-capable clients should authenticate in the browser. Otherwise, configure the MCP client to inject the `Authorization` header from its secret store. If the client cannot attach a secret-backed header, fail closed and use REST fallback only from a process that already has `QOORY_API_KEY` configured. Before making a credit-spending tool call, connect and list the available tools to verify authentication without putting the key in model context.
+The Skill can be installed without MCP and does not install credentials. OAuth-capable clients should authenticate in the browser. Otherwise, use REST only from a process that already has `QOORY_API_KEY` configured. If the client cannot keep credentials in a secret store, fail closed.
+
+## Access Preflight
+
+Before the first live Qoory request in a session:
+
+1. Check whether Qoory MCP tools are available without making a credit-spending call.
+2. If Qoory MCP is available, use it and continue the user's original request.
+3. Otherwise, check only whether `QOORY_API_KEY` is configured in the process environment. Never print, echo, inspect, or expose its value.
+4. If neither access path is available, stop before research and ask the user to choose:
+   - Connect Qoory Remote MCP with browser OAuth (recommended) using `https://api.qoory.ai/mcp`.
+   - Create an API key in Qoory Developer Settings at `https://www.qoory.ai/settings/developer` and store it in the client's secret manager or process environment for REST fallback.
+5. Never ask the user to paste an API key into chat. After the user completes either path, resume the original request.
 
 ## Workflow
 
@@ -94,6 +106,7 @@ Read `references/operations.md` when choosing the right tool or REST fallback. B
 - Do not bypass Qoory auth, credit spend, rate limits, or usage logging.
 - Do not expose API keys, raw secrets, internal provider names, hidden admin fields, embeddings, or raw ingestion payloads.
 - Never put `QOORY_API_KEY` or bearer tokens in URLs, query parameters, logs, screenshots, citations, or final answers.
+- Never read or reveal the value of `QOORY_API_KEY`; check only whether it is configured.
 - Follow the complete stop/retry guidance in `references/operations.md` for every public API error code.
 - Do not treat Qoory output as financial advice. Frame investment/trading answers as research inputs.
 - If a user asks for a bulk dump, all records, raw source payloads, or private fields, refuse that shape and offer a bounded search, curated discovery endpoint, or one-entity detail fetch instead.
