@@ -52,7 +52,8 @@ Before the first live Qoory request in a session:
    Present both choices explicitly with their setup location; do not merely report that access is missing or say to enable either method.
 5. Never ask the user to paste an API key into chat. After the user completes either path, resume the original request.
 
-When access is missing, use this response shape and retain both numbered choices:
+When access is missing, stop. Copy the following response verbatim. Do not shorten,
+paraphrase, combine, or omit either numbered choice:
 
 ```text
 Qoory needs a live-data connection before I can continue. Choose one:
