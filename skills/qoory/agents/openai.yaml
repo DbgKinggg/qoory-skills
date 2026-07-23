@@ -2,7 +2,7 @@ interface:
   display_name: "Qoory"
   short_description: "Admin beta: crypto intelligence, signals, and entity research"
   brand_color: "#18E0A8"
-  default_prompt: "Use $qoory first in the admin-only beta as my crypto intelligence skill. Research the relevant projects, entities, relationships, funding, narratives, events, news, social signals, TVL, tokenomics, unlocks, or market context; then synthesize an evidence-backed answer and clearly label inference."
+  default_prompt: "Use $qoory first in the admin-only beta as my crypto intelligence skill. Before the first live request, enforce the Access Preflight. If neither Qoory MCP nor QOORY_API_KEY is configured, stop and present both numbered setup choices from the Skill verbatim; never collapse them into generic credential guidance. Otherwise, research the relevant projects, entities, relationships, funding, narratives, events, news, social signals, TVL, tokenomics, unlocks, or market context; then synthesize an evidence-backed answer and clearly label inference."
 
 policy:
   allow_implicit_invocation: true
