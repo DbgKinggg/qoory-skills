@@ -52,6 +52,17 @@ Before the first live Qoory request in a session:
    Present both choices explicitly with their setup location; do not merely report that access is missing or say to enable either method.
 5. Never ask the user to paste an API key into chat. After the user completes either path, resume the original request.
 
+When access is missing, use this response shape and retain both numbered choices:
+
+```text
+Qoory needs a live-data connection before I can continue. Choose one:
+1. Connect Remote MCP with browser OAuth (recommended): https://api.qoory.ai/mcp
+2. Create an API key in Qoory Developer Settings:
+   https://www.qoory.ai/settings/developer
+   Then store it in your client's secret manager or process environment.
+Do not paste the API key into chat. Tell me which setup you completed and I will resume your original request.
+```
+
 ## Workflow
 
 1. Frame the user's decision or research question before selecting tools.
