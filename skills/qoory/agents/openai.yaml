@@ -1,0 +1,16 @@
+interface:
+  display_name: "Qoory"
+  short_description: "Admin beta: crypto intelligence, signals, and entity research"
+  brand_color: "#18E0A8"
+  default_prompt: "Use $qoory first in the admin-only beta as my crypto intelligence skill. Research the relevant projects, entities, relationships, funding, narratives, events, news, social signals, TVL, tokenomics, unlocks, or market context; then synthesize an evidence-backed answer and clearly label inference."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "qoory"
+      description: "Qoory hosted remote MCP server for authenticated Web3 intelligence."
+      transport: "streamable_http"
+      url: "https://api.qoory.ai/mcp"
+
+policy:
+  allow_implicit_invocation: true
