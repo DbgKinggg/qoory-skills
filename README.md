@@ -5,7 +5,7 @@ Give AI coding agents a reusable crypto intelligence workflow backed by Qoory's 
 ## Install
 
 ```bash
-npx skills add DbgKinggg/qoory-skills --skill qoory
+npx skills add qoory-ai/qoory-skills --skill qoory
 ```
 
 The installer supports Codex, Claude Code, Cursor, GitHub Copilot, Windsurf, Gemini CLI, OpenCode, Cline, and other agents that implement the Skills format.
